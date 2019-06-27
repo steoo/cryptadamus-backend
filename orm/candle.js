@@ -20,6 +20,10 @@ Candle.init({
     type: Sequelize.BIGINT(255),
     allowNull: false
   },
+  timeFrame: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   open: {
     type: Sequelize.DOUBLE,
     allowNull: false

@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const WebSocket = require('ws');
 const BFX = require('bitfinex-api-node');
-const {RSI} = require('bfx-hf-indicators');
 
-const Ticker = require('../orm/ticker');
+// const Ticker = require('../orm/ticker');
 const Candle = require('../orm/candle');
 
 // Ticker.sync();
@@ -85,11 +83,8 @@ router.get('/', function (req, res, next) {
       .error((err) => console.error(err));
   });
   
-  const rsi = new RSI([14]);
   ws.onCandle({key: candleKey}, (candles) => {
     console.log('candle received: ', candles.length);
-    
-    let rsiCounter = 0;
     
     for (let i = candles.length - 1; i >= 0; i--) {
       
@@ -113,9 +108,6 @@ router.get('/', function (req, res, next) {
         timestamp: new Date(data.mts)
       };
       
-      if (rsiCounter === 0) {
-        console.log('data to insert: ', dataToInsert);
-      }
       
       Candle
         .create(dataToInsert)

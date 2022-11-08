@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "bfx-hf-indicators": "^1.0.2",
+    "bfx-hf-indicators": "^2.0.8",
     "bitfinex-api-node": "^2.0.6",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
